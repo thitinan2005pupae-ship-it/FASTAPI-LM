@@ -1,5 +1,5 @@
 
-from fastapi import APIRouter # pyright: ignore[reportMissingImports]
+from fastapi import APIRouter
 from .schema import RecommendRequest
 from .service import search_predict
 
@@ -9,7 +9,3 @@ router = APIRouter()
 def get_recommendations(data: RecommendRequest):
     recommendations = search_predict(data.query, data.top_k, data.type)
     return recommendations
-
-@router.post('/search',tags=['Recommedations'])
-def get_recommedations():
-    return {"message":"User recommedations endpoint"}
